@@ -68,7 +68,7 @@ Avant de compiler le projet, assure-toi d’avoir :
 
 ## 📌 Objectifs du projet (roadmap)
 
-- [ ] Mise en place d’une scène de jeu (`QGraphicsView`)
+- [ ] Mise en place d’une scène de jeu
 - [ ] Gestion de la folle manette de jeu
 - [ ] Gestion des entrées clavier
 - [ ] Ajout d’un joueur et d’ennemis
