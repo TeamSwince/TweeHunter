@@ -171,31 +171,31 @@ void MenuPrincipal::afficherTitre(QPainter& painter) {
         return;
     }
 
-    const int frameW = titreSprite->width() / nombreImageTitre;
-    const int frameH = titreSprite->height();
-    if (frameW <= 0 || frameH <= 0) {
+    const int largeurImage = titreSprite->width() / nombreImageTitre;
+    const int hauteurImage = titreSprite->height();
+    if (largeurImage <= 0 || hauteurImage <= 0) {
         return;
     }
 
-    QRect src(indexImageTitre * frameW, 0, frameW, frameH);
+    QRect src(indexImageTitre * largeurImage, 0, largeurImage, hauteurImage);
 
-    const float maxW = width() * 0.7f;  
-    const float maxH = height() * 0.4f; 
+    const float largeurMax = width() * 0.7f;  
+    const float hauteurMax = height() * 0.4f; 
 
-    float drawW = maxW;
-    float drawH = drawW * float(frameH) / float(frameW);
+    float largeur = largeurMax;
+    float hauteur = largeur * float(hauteurImage) / float(largeurImage);
 
-    if (drawH > maxH) {
-        drawH = maxH;
-        drawW = drawH * float(frameW) / float(frameH);
+    if (hauteur > hauteurMax) {
+        hauteur = hauteurMax;
+        largeur = hauteur * float(largeurImage) / float(hauteurImage);
     }
 
-    const int drawX = (width() - int(drawW)) / 2;
-    int drawY = int(height() * 0.04f) - int(height() * 0.06f); // monte de 6%
-    drawY = std::max(0, drawY);
+    const int positionX = (width() - int(largeur)) / 2;
+    int positionY = int(height() * 0.04f) - int(height() * 0.06f);
+    positionY = std::max(0, positionY);
 
     painter.drawPixmap(
-        QRect(drawX, drawY, int(drawW), int(drawH)),
+        QRect(positionX, positionY, int(largeur), int(hauteur)),
         *titreSprite,
         src
     );
