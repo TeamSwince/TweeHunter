@@ -3,6 +3,8 @@
 #include <QPainter>
 #include <algorithm>
 
+#include "Reticule.h"
+
 EcranJeu::EcranJeu(QWidget* parent)
     : QWidget(parent)
 {
@@ -27,6 +29,9 @@ EcranJeu::EcranJeu(QWidget* parent)
     fadeInAnim->setDuration(1000);
     fadeInAnim->setStartValue(255);
     fadeInAnim->setEndValue(0);
+
+	//ajout à enlever apres test
+	Reticule* reticule = new Reticule(this);
 
     connect(fadeInAnim, &QPropertyAnimation::finished, this, [this]() {
         overlay->hide();
