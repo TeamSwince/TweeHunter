@@ -13,6 +13,10 @@
 #include "fade_overlay.h"
 #include "Reticule.h"
 
+#include <SDL3/SDL.h>
+#include <QTimer>
+#include <QDebug>
+
 class EcranJeu : public QWidget
 {
     Q_OBJECT

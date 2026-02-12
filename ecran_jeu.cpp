@@ -42,6 +42,31 @@ EcranJeu::EcranJeu(QWidget* parent)
 	reticule = new Reticule(this,pos);
     reticule->show();
 
+    //Partie joystick de test
+    SDL_Gamepad* gamepad = nullptr;
+
+    int count = 0;
+    SDL_GetGamepads(&count);
+
+    if (count > 0)
+    {
+        gamepad = SDL_OpenGamepad(0);
+        qDebug() << "Manette ouverte !";
+    }
+    else
+    {
+        qDebug() << "Aucune manette détectée";
+    }
+
+
+
+
+    //Fin de la zone de test
+
+    if (SDL_Init(SDL_INIT_GAMEPAD) < 0)
+{
+    qDebug() << "Erreur SDL:" << SDL_GetError();
+}
 
     connect(fadeInAnim, &QPropertyAnimation::finished, this, [this]() {
         overlay->hide();
