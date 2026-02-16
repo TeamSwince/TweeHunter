@@ -36,7 +36,7 @@ MenuPrincipal::MenuPrincipal(QWidget *parent) :
     musiqueMenu = new QAudioOutput(this);
 
     joueurMusique->setAudioOutput(musiqueMenu);
-    joueurMusique->setSource(QUrl::fromLocalFile(QDir::currentPath() + "/sounds/menu/track_2.wav"));
+    joueurMusique->setSource(QUrl::fromLocalFile(QDir::currentPath() + "/sounds/menu/track_2.mp3"));
     musiqueMenu->setVolume(this->volumeMax);
     joueurMusique->play();
 
