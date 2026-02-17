@@ -1,4 +1,4 @@
-QT       += core gui multimedia
+QT += core gui multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,9 +15,13 @@ SOURCES += \
     spritesheet.cpp \
     sprite_manager.cpp \
     ecran_jeu.cpp \
-    fade_overlay.cpp \
     panneau_options.cpp \
-    volume_bouton.cpp
+    volume_bouton.cpp \
+    fade_overlay.cpp \
+    jeu.cpp \
+    mouvement.cpp \
+    randomiser.cpp \
+    target.cpp
 
 HEADERS += \
     main_window.h \
@@ -32,7 +36,11 @@ HEADERS += \
     ecran_jeu.h \
     fade_overlay.h \
     panneau_options.h \
-    volume_bouton.h
+    volume_bouton.h \
+    jeu.h \
+    mouvement.h \
+    randomiser.h \
+    target.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
