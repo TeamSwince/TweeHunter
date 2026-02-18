@@ -13,11 +13,7 @@
 class VolumeBouton : public Bouton {
     Q_OBJECT
 public:
-
     VolumeBouton(const QString& cheminBouton, GestionnaireAudio* gestionnaireAudio, AudioMode mode, QWidget* parent = nullptr);
-
-    void setVolume(float v);
-    float getVolume() const { return volume; }
 
 protected:
     void paintEvent(QPaintEvent* e) override;
@@ -27,9 +23,10 @@ private:
 
     GestionnaireAudio* gestionnaireAudio = nullptr;
     AudioMode mode;
-    float volume;
 
     float parseVolume(float volume);
+    void setVolume(float v);
+    void onButtonClick();
 };
 
 #endif
