@@ -29,19 +29,19 @@ public:
     void stopAndClearMusic();
 
     // SFX
-    void addSFX(QString name, QString path);
-    void playSFX(QString name);
-    void setSFXVolume(float v);
-    float getSFXVolume() const;
-    float getSFXVolumeSetting() const;
-    float getMaxSFXVolume() const;
+    void addSfx(QString name, QString path);
+    void playSfx(QString name);
+    void setSfxVolume(float v);
+    float getSfxVolume() const;
+    float getSfxVolumeSetting() const;
+    float getMaxSfxVolume() const;
 
 private slots:
     void onMediaFinished(QMediaPlayer::MediaStatus status);
 
 private:
     const float maxMusicVolume = 0.025f;
-    const float maxSFXVolume = 0.025f;
+    const float maxSfxVolume = 0.025f;
 
     float musicVolume = 0.0f;
     float sfxVolume = 0.0f;
