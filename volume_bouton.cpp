@@ -4,29 +4,37 @@ VolumeBouton::VolumeBouton(const QString& cheminBouton, GestionnaireAudio* gesti
     : Bouton(cheminBouton, 3, parent)
 {
     this->gestionnaireAudio = gestionnaireAudio;
-    this->volume = this->gestionnaireAudio->getMusicVolume();
     this->mode = mode;
     // Petit comportement pratique: cliquer fait cycler le volume.
     connect(this, &Bouton::clicked, this, [this]() {
-        float v = volume + (1.0f / volumeBars);
-        if (v > 0.9f && v < 1.0f) {
-            v = 1.0f;
-        }
-        else if (v > 1.001f) {
-            v = 0.0f;
-        }
-        setVolume(v);
+        this->onButtonClick();
     });
 }
 
 void VolumeBouton::setVolume(float v)
 {
-    this->volume = v;
     if (this->mode == MUSIQUE) {
         this->gestionnaireAudio->setMusicVolume(v);
         return;
     }
     this->gestionnaireAudio->setSfxVolume(v);
+}
+
+void VolumeBouton::onButtonClick() {
+    float v = 0.0f;
+    if (mode == MUSIQUE) {
+        v = this->gestionnaireAudio->getMusicVolume() + (1.0f / volumeBars);
+    }
+    else {
+        v = this->gestionnaireAudio->getSfxVolume() + (1.0f / volumeBars);
+    }
+    if (v > 0.9f && v < 1.0f) {
+        v = 1.0f;
+    }
+    else if (v > 1.001f) {
+        v = 0.0f;
+    }
+    setVolume(v);
 }
 
 void VolumeBouton::paintEvent(QPaintEvent* e)
@@ -58,7 +66,7 @@ void VolumeBouton::paintEvent(QPaintEvent* e)
 
     // -------- Barres de volume --------
     {
-        const float v = parseVolume(volume);
+        const float v = parseVolume(mode == MUSIQUE ? this->gestionnaireAudio->getMusicVolume() : this->gestionnaireAudio->getSfxVolume());
         const int filled = int(qRound(v * volumeBars));
 
         const int gap = qMax(3, int(barsRect.width() * 0.03));
