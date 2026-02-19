@@ -27,8 +27,7 @@ SOURCES += \
     mouvement.cpp \
     randomiser.cpp \
     target.cpp \
-    gestionnaire_audio.cpp
-
+    gestionnaire_audio.cpp \
     Reticule.cpp \
     Variete.cpp \
     Touches.cpp
@@ -51,7 +50,7 @@ HEADERS += \
     mouvement.h \
     randomiser.h \
     target.h \
-    gestionnaire_audio.h
+    gestionnaire_audio.h \
     fade_overlay.h \
     Reticule.h \
     Variete.h \
